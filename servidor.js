@@ -23,8 +23,7 @@ const server = http.createServer((req, res)=>{
     case '/servico':
       res.statusCode = 301;
       res.setHeader('Location', '/servico');
-      res.end();
-      return;
+      break;
 
     default:
       caminho += 'paginadeerro.html';
