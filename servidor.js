@@ -1,19 +1,11 @@
 const http = require('http');
-//const fs = require('fs');
-const path = require('path');
+const fs = require('fs');
 
-const PORT = 3009;
-
-// Cria o servidor
-const server = http.createServer((req, res) => {
-  res.writeHead(200, { 'Content-Type': 'text/plain' });
-  res.end('Servidor Node.js rodando na porta 3009 ');
-});
-
-// Inicia o servidor na porta 3009
-server.listen(3009, () => {
-  console.log('Servidor iniciado em http://localhost:3009');
-});
+const server = http.createServer((req, res)=>{
+  console.log(req.url, req.method);
+   
+  //definindo o tipo de conteúdo do cabeçalho
+  res.setHeader('Tipo-Conteudo', 'texto/simples');
 
   let caminho = './views/';
   
@@ -41,16 +33,21 @@ server.listen(3009, () => {
   }
 
   // Lê e envia o arquivo HTML
-  fs.readFile(path.resolve(__dirname, caminho), (err, data) => {
-    if (err) {
-      res.statusCode = 500;
-      res.end('Erro interno no servidor');
-    } else {
-      res.setHeader('Content-Type', 'text/html');
-      res.end(data);
-    }
-  });
 
-server.listen(PORT, () => {
-  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  fs.readFile(caminho, (err, data)=>{
+    if(err){
+        console.log(err);
+        res.end();
+    }else{
+        //res.write
+        res.write(data);
+        res.end();
+    }
+});
+
+});
+
+
+server.listen(3009, 'localhost', () => {
+console.log("ouvindo requisição na porta 3009");
 });
