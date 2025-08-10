@@ -15,14 +15,14 @@ const server = http.createServer((req, res)=>{
       res.statusCode = 200;
       break;
 
-    case '/contato':
-      caminho += 'contato.html';
+    case '/servico':
+      caminho += 'servico.html';
       res.statusCode = 200;
       break;
 
-    case '/servico':
+    case '/orcamentos':
       res.statusCode = 301;
-      res.setHeader('Location', '/servico');
+      res.setHeader('Location', '/contato');
       break;
 
     default:
