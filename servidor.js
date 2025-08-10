@@ -15,14 +15,14 @@ const server = http.createServer((req, res)=>{
       res.statusCode = 200;
       break;
 
-    case '/servico':
-      caminho += 'servico.html';
+    case '/contato':
+      caminho += 'contato.html';
       res.statusCode = 200;
       break;
 
-    case '/contato':
+    case '/servico':
       res.statusCode = 301;
-      res.setHeader('Location', '/contato.html');
+      res.setHeader('Location', '/servico');
       res.end();
       return;
 
@@ -46,7 +46,6 @@ const server = http.createServer((req, res)=>{
 });
 
 });
-
 
 server.listen(3009, 'localhost', () => {
 console.log("ouvindo requisição na porta 3009");
