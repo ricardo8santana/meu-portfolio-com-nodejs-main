@@ -1,5 +1,5 @@
 const http = require('http');
-const fs = require('fs');
+//const fs = require('fs');
 const path = require('path');
 
 const PORT = 3009;
@@ -30,7 +30,7 @@ server.listen(3009, () => {
 
     case '/contato':
       res.statusCode = 301;
-      res.setHeader('Location', '/servico');
+      res.setHeader('Location', '/contato.html');
       res.end();
       return;
 
